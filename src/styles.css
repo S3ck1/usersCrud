@@ -1,0 +1,42 @@
+* {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+:root {
+  --black: #302F2F;
+  --red: #D85D5D;
+  --darkred: #D85D5D;
+  --blue: #555A88;
+  --gray: #BDBDBD;
+  --lightray: #D3D3D3;
+}
+.App {
+  text-align: center;
+  padding: 70px;
+}
+
+h1 {
+  font-size: 50px;
+  text-align: left;
+} 
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.adduser-btn {
+  background-color: var(--blue);
+  border: none;
+  color: white;
+  width: 200px;;
+  height: 50px;
+  font-size: 16px;
+}
+
+.adduser-btn i{
+  margin-right: 8px;
+}
+
+
