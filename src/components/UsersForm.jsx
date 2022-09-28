@@ -1,11 +1,16 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-const UsersForm = () => {
-  const { register, handleSubmit } = useForm();
+const UsersForm = ({getUsers}) => {
+    
+  const { register, handleSubmit, reset } = useForm();
 
   const submit = (data) => {
-    console.log(data);
+    axios
+		.post("https://users-crud1.herokuapp.com/users/", data)
+		.then(() => getUsers())
+		.catch((error) => console.log(error.response));
   };
 
   return (
@@ -13,13 +18,13 @@ const UsersForm = () => {
       <form onSubmit={handleSubmit(submit)}>
         <div className="input-container">
           <label htmlFor="name">
-            <i class="fa-solid fa-user"></i>
+            <i className="fa-solid fa-user"></i>
           </label>
           <input
             type="text"
             id="name"
             placeholder="first name"
-            {...register("name")}
+            {...register("first_name")}
           />
         </div>
         <div className="input-container">
@@ -28,12 +33,12 @@ const UsersForm = () => {
             type="text"
             id="lastname"
             placeholder="last name"
-            {...register("lastname")}
+            {...register("last_name")}
           />
         </div>
         <div className="input-container">
           <label htmlFor="email-input">
-            <i class="fa-solid fa-envelope"></i>
+            <i className="fa-solid fa-envelope"></i>
           </label>
           <input
             type="email"
@@ -44,7 +49,7 @@ const UsersForm = () => {
         </div>
         <div className="input-container">
           <label htmlFor="password-input">
-            <i class="fa-solid fa-lock"></i>
+            <i className="fa-solid fa-lock"></i>
           </label>
           <input
             type="password"
@@ -55,7 +60,7 @@ const UsersForm = () => {
         </div>
         <div className="input-container">
           <label htmlFor="birthday">
-            <i class="fa-solid fa-cake-candles"></i>
+            <i className="fa-solid fa-cake-candles"></i>
           </label>
           <input type="date" id="birthday" {...register("birthday")} />
         </div>

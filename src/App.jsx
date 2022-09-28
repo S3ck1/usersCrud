@@ -5,30 +5,26 @@ import UsersList from "./components/UsersList";
 import UsersForm from "./components/UsersForm";
 
 function App() {
-  const initialUsers = [
-    {
-      name: "Jose",
-      lastname: "del Valle",
-      email: "josedv@gmail.com",
-      password: "12345678",
-      birthday: "15-11-1990",
-    },
-    {
-      name: "Antonio",
-      lastname: "Rodriguez",
-      email: "anto@ghotmail.com",
-      password: "12345678",
-      birthday: "15-11-1990",
-    },
-  ];
 
+  const [users, setUsers] = useState([]);
 
-  const [users, setUsers] = useState(initialUsers);
+  useEffect(() => {
+    axios
+      .get("https://users-crud1.herokuapp.com/users/")
+      .then((res) => setUsers(res.data));
+  }, [])
+
+  const getUsers = () => {
+    axios
+      .get("https://users-crud1.herokuapp.com/users/")
+      .then((res) => setUsers(res.data));
+  }
+
 
   return (
     <div className="App">
-        <UsersForm />
-        <UsersList users={users} />
+        <UsersForm getUsers={getUsers}/>
+        <UsersList users={users} getUsers={getUsers}/>
     </div>
   );
 }
