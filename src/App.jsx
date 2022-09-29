@@ -22,22 +22,24 @@ function App() {
 
   const selectUser = (user) => {
     setSelectedUser(user);
-  }  
+  };
 
-  const deselectUser= () => setSelectedUser(null);
+  const deselectUser = () => setSelectedUser(null);
 
   return (
     <div className="App">
-      <UsersForm
-        getUsers={getUsers}
-        selectedUser={selectedUser}
-        deselectUser={deselectUser}
-      />
-      <UsersList 
-        users={users} 
-        getUsers={getUsers}
-        selectUser={selectUser}
-       />
+        <div className="main-container">
+        <UsersForm
+          getUsers={getUsers}
+          selectedUser={selectedUser}
+          deselectUser={deselectUser}
+        />
+        <UsersList 
+          users={users} 
+          getUsers={getUsers} 
+          selectUser={selectUser} 
+          />
+      </div>
     </div>
   );
 }
