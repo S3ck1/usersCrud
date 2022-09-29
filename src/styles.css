@@ -18,25 +18,22 @@
 h1 {
   font-size: 50px;
   text-align: left;
-} 
+}
 
-.header-container {
+h2 {
+  margin: 0;
+}
+
+.user {
+  margin: 50px;
+}
+
+.user-info {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  flex-direction: column;
 }
 
-.adduser-btn {
-  background-color: var(--blue);
-  border: none;
-  color: white;
-  width: 200px;;
-  height: 50px;
-  font-size: 16px;
+ul {
+  list-style-type: none;
+  padding: 0;
 }
-
-.adduser-btn i{
-  margin-right: 8px;
-}
-
-

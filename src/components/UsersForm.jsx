@@ -2,16 +2,38 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-const UsersForm = ({getUsers}) => {
-    
+const UsersForm = ({ getUsers, selectedUser, deselectUser }) => {
+  
   const { register, handleSubmit, reset } = useForm();
 
+  useEffect(() => {
+    if (selectedUser) {
+      reset(selectedUser);
+    }
+  }, [selectedUser]);
+
   const submit = (data) => {
-    axios
-		.post("https://users-crud1.herokuapp.com/users/", data)
-		.then(() => getUsers())
-		.catch((error) => console.log(error.response));
+    if (selectedUser) {
+      console.log("actualizando");
+    } else {
+      axios
+        .post("https://users-crud1.herokuapp.com/users/", data)
+        .then(() => getUsers())
+        .catch((error) => console.log(error.response));
+    }
+    clear();
   };
+
+  const clear = () => {
+    reset({
+      first_name: "",
+      last_name: "",
+      email: "",
+      password: "",
+      birthday: "",
+    });
+    deselectUser();
+  }
 
   return (
     <div className="form-container">
